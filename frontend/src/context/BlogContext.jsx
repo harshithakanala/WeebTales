@@ -26,13 +26,27 @@ const BlogContextProvider = (props) => {
         }
     };
 
+    const subscribeEmail = async (email) => {
+        try {
+            const response = await axios.post(backendUrl + '/api/email/subscribe', { email });
+            if (response.data.success) {
+                toast.success('Subscribed successfully!');
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    };
+
 
     useEffect(() => {
         getBlogsData();
     }, []);
 
     const value = {
-        blogs,
+        blogs, subscribeEmail,
         search, setSearch, showSearch, setShowSearch,
         backendUrl,
         setToken, token

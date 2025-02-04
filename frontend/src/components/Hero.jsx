@@ -1,18 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
 import { assets } from '../assets/assets';
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[80vh] bg-cover bg-center" style={{ backgroundImage: `url(${assets.hero_img})` }}>
-      <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center px-6">
-        <h1 className="text-4xl md:text-6xl font-bold">Dive Into the World of Anime</h1>
-        <p className="text-lg md:text-xl mt-4 max-w-2xl">
-          Explore the latest anime trends, reviews, and hidden gems from the anime universe.
-        </p>
-        <button className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-lg font-semibold">
-          Start Exploring
-        </button>
-      </div>
+    <div className="relative w-full h-[50vh] sm:h-[60vh]">
+      <img 
+        src={assets.hero_img} 
+        alt="Anime Blog Cover" 
+        className="w-full h-full object-cover"
+      />
+
+      {/* "Read Blogs" Button */}
+      <Link 
+        to="/collection"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white py-2 px-6 rounded-full font-semibold text-lg hover:bg-blue-700 transition-all"
+      >
+        Read Blogs
+      </Link>
     </div>
   );
 };

@@ -12,6 +12,7 @@ const Navbar = ({ setToken }) => {
       <div className="hidden md:flex gap-8 text-lg">
         <NavLink to="/add" className="hover:text-gray-400 transition">Add Blog</NavLink>
         <NavLink to="/list" className="hover:text-gray-400 transition">All Blogs</NavLink>
+        <NavLink to="/sub" className="hover:text-gray-400 transition">All Subscribers</NavLink>
       </div>
 
       {/* Right - Profile & Logout */}

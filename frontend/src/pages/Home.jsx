@@ -1,15 +1,17 @@
-import React from 'react';
-import Hero from '../components/Hero';
-import LatestCollection from '../components/LatestBlogs';
-import BestSeller from '../components/FeaturedBlog';
-import NewsletterBox from '../components/NewsletterBox';
+import React from "react";
+import Hero from "../components/Hero";
+import LatestCollection from "../components/LatestBlogs";
+import FeaturedBlogs from "../components/FeaturedBlog";
+import NewsletterBox from "../components/NewsletterBox";
 
 const Home = () => {
   return (
-    <div className="container mx-auto px-4">
+    <div className="p-4 lg:p-8 bg-gray-50 min-h-screen">
       <Hero />
-      <LatestCollection />
-      <BestSeller />
+      <div>
+        <LatestCollection />
+        <FeaturedBlogs />
+      </div>
       <NewsletterBox />
     </div>
   );

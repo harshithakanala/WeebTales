@@ -3,12 +3,13 @@ import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import AddBlog from './pages/Add';
 import ListBlogs from './pages/List';
+import Subscribers from './pages/Subscribers';
 import Login from './components/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
-export const currency = '$';
+
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -30,6 +31,7 @@ const App = () => {
           <Routes>
             <Route path="/add" element={<AddBlog token={token} />} />
             <Route path="/list" element={<ListBlogs token={token} />} />
+            <Route path="/sub" element={<Subscribers token={token} />} />
           </Routes>
         )}
       </div>

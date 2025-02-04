@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { BlogContext } from '../context/BlogContext';
 
 const NewsletterBox = () => {
+  const { subscribeEmail } = useContext(BlogContext);  
+  const [email, setEmail] = useState('');
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    if (email) {
+      subscribeEmail(email);  
+      setEmail('');  
+    }
   };
 
   return (
@@ -22,6 +30,8 @@ const NewsletterBox = () => {
           className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 outline-none"
           type="email" 
           placeholder="Enter your email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)}  
           required 
         />
         <button 

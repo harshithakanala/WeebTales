@@ -12,24 +12,28 @@ const Login = () => {
   const [email, setEmail] = useState('');
 
   const onSubmitHandler = async (event) => {
-    event.preventDefault();
-    try {
-      const endpoint = currentState === 'Sign Up' ? '/api/user/register' : '/api/user/login';
-      const userData = currentState === 'Sign Up' ? { name, email, password } : { email, password };
+  event.preventDefault();
+  try {
+    const endpoint = currentState === 'Sign Up' ? '/api/user/register' : '/api/user/login';
+    const userData = currentState === 'Sign Up' ? { name, email, password } : { email, password };
 
-      const response = await axios.post(backendUrl + endpoint, userData);
+    const response = await axios.post(backendUrl + endpoint, userData);
 
-      if (response.data.success) {
-        setToken(response.data.token);
-        localStorage.setItem('token', response.data.token);
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+    if (response.data.success) {
+      setToken(response.data.token);
+      localStorage.setItem('token', response.data.token);
+
+      // Redirect to the home page after successful login or signup
+      navigate('/');
+    } else {
+      toast.error(response.data.message);
     }
-  };
+  } catch (error) {
+    console.log(error);
+    toast.error(error.message);
+  }
+};
+
 
   useEffect(() => {
     if (token) {
