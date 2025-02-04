@@ -14,19 +14,16 @@ const Collection = () => {
 
     let filtered = [...blogs];
 
-    // 🔹 Apply search filter
     if (search.trim() !== "") {
       filtered = filtered.filter((blog) =>
         blog.title.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    // 🔹 Apply genre filter
     if (genres.length > 0) {
       filtered = filtered.filter((blog) => genres.includes(blog.genre));
     }
 
-    // 🔹 Apply sorting
     if (sortType === "newest") {
       filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else {
@@ -36,7 +33,6 @@ const Collection = () => {
     setFilteredBlogs(filtered);
   }, [blogs, search, genres, sortType]);
 
-  // 🔹 Handle Genre Selection
   const toggleGenre = (e) => {
     const genre = e.target.value;
     setGenres((prev) =>
@@ -46,11 +42,8 @@ const Collection = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-50 text-gray-900">
-      {/* Sidebar Filter */}
       <div className="w-64 bg-white shadow-md border-r p-6">
         <p className="text-lg font-semibold mb-4">Filters</p>
-
-        {/* Genre Filter */}
         <div>
           <p className="text-gray-700 text-sm font-medium">Genre</p>
           <div className="flex flex-col gap-2 mt-2">
@@ -68,8 +61,6 @@ const Collection = () => {
             ))}
           </div>
         </div>
-
-        {/* Sorting Option */}
         <div className="mt-6">
           <p className="text-gray-700 text-sm font-medium">Sort By</p>
           <select
@@ -82,13 +73,11 @@ const Collection = () => {
         </div>
       </div>
 
-      {/* Blog Listing Section */}
-      <div className="flex-1 p-10 ml-0 lg:ml-16"> {/* Adjusted margin-left to reduce the gap */}
+      <div className="flex-1 p-10 ml-0 lg:ml-16">
         <div className="flex justify-between items-center mb-6">
           <Title text1="ALL" text2="BLOGS" />
         </div>
 
-        {/* Display Blogs */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredBlogs.length > 0 ? (
             filteredBlogs.map((item) => (

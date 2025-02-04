@@ -58,11 +58,6 @@ const About = () => {
             </div>
           ))}
         </div>
-
-        {/* Newsletter Subscription */}
-        <div className="mt-16">
-          <NewsletterBox />
-        </div>
       </div>
     </div>
   );

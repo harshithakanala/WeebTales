@@ -2,7 +2,6 @@ import React from "react";
 import Hero from "../components/Hero";
 import LatestCollection from "../components/LatestBlogs";
 import FeaturedBlogs from "../components/FeaturedBlog";
-import NewsletterBox from "../components/NewsletterBox";
 
 const Home = () => {
   return (
@@ -12,7 +11,6 @@ const Home = () => {
         <LatestCollection />
         <FeaturedBlogs />
       </div>
-      <NewsletterBox />
     </div>
   );
 };

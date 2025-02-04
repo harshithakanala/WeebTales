@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="flex">
+      <div className="flex flex-1">
         <Sidebar />
         <div className="flex-1 ml-[250px]">
           <Topbar />
@@ -26,11 +26,11 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog/:blogId" element={<Blog />} />
-              {/* <Route path="/login" element={<Login />} /> */}
             </Routes>
           </div>
         </div>
       </div>
+      {/* Footer should be outside the content and take full width */}
       <Footer />
     </div>
   );

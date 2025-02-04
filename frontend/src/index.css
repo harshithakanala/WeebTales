@@ -78,7 +78,6 @@ body {
   text-align: center;
 }
 
-/* Footer Grid */
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -105,6 +104,22 @@ body {
 }
 
 .footer-links a:hover {
+  color: white;
+}
+
+/* Footer Social Icons */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-socials a {
+  color: gray;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
   color: white;
 }
 
@@ -158,5 +173,265 @@ input, select {
   input, select {
     font-size: 14px;
     padding: 10px;
+  }
+}
+
+/* --- Layout Adjustments for responsiveness --- */
+
+/* Hero Section - Make responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 40vh;
+  }
+  .hero img {
+    object-position: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Blog Listing */
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr; /* Stack blogs vertically on mobile */
+  }
+
+  .footer-links {
+    flex-direction: column;
+  }
+
+  .footer-links a {
+    text-align: center;
+  }
+}
+
+/* For About Section's Responsive Layout */
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.75rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* About Page Specific - Responsive Design */
+@media (max-width: 768px) {
+  .about-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-section {
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .about-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .about-description {
+    text-align: center;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr; /* Stack items vertically */
+  }
+}
+
+/* For BlogItem Component */
+@media (max-width: 768px) {
+  .blog-item {
+    padding: 12px;
+  }
+  .blog-item h3 {
+    font-size: 1.25rem;
+  }
+  .blog-item p {
+    font-size: 0.875rem;
+  }
+}
+
+/* FeaturedBlog Component Adjustments */
+@media (max-width: 768px) {
+  .featured-blog {
+    grid-template-columns: 1fr; /* Stack featured blogs on mobile */
+  }
+}
+
+/* For LatestBlog Component */
+@media (max-width: 768px) {
+  .latest-blogs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Adjusting Hero for Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 40vh;
+  }
+  .hero-button {
+    font-size: 1.25rem;
+  }
+}
+
+/* Sidebar Mobile Responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* SearchBar - Make it mobile-friendly */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .search-input {
+    font-size: 1rem;
+  }
+}
+
+/* TopBar - Responsive for smaller screens */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 8px 12px;
+  }
+
+  .topbar .search-bar {
+    width: 100%;
+  }
+
+  .topbar .logo {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile-specific styles for components */
+@media (max-width: 600px) {
+  .home-header {
+    font-size: 1.5rem;
+  }
+
+  .blog-item img {
+    height: 200px;
+  }
+
+  .newsletter-box {
+    padding: 10px 6px;
+    font-size: 14px;
+  }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 480px) {
+  /* Make the input field bigger on mobile */
+  .newsletter-box input {
+    font-size: 16px; /* Larger font for better readability */
+    padding: 12px 16px; /* Increase padding to make the input box bigger */
+  }
+
+  /* Make the Subscribe button smaller */
+  .newsletter-box button {
+    font-size: 8px; /* Smaller text for the button */
+    padding: 4px 8px; /* Smaller padding for the button */
+  }
+}
+
+/* Footer - Mobile Optimized */
+.footer {
+  background: #111;
+  padding: 40px 20px;
+  text-align: center;
+  width: 100%;  /* Ensure full width */
+  box-sizing: border-box;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr; /* Stack footer elements vertically */
+    gap: 15px; /* Space out footer items */
+  }
+}
+
+/* Footer Links */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: gray;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* Footer Social Icons */
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-socials a {
+  color: gray;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: white;
+}
+
+/* Adjusting padding and font sizes for smaller screens */
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 15px; /* Reduce padding on mobile */
+  }
+
+  .footer-links {
+    gap: 8px; /* Smaller gap between links */
+  }
+
+  .footer-links a {
+    font-size: 14px; /* Smaller font size for links */
+  }
+
+  .footer-socials {
+    gap: 10px; /* Space out icons more */
+  }
+
+  .footer-socials a {
+    font-size: 20px; /* Resize social media icons */
   }
 }
