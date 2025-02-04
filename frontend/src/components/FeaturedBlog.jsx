@@ -1,37 +1,46 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { BlogContext } from '../context/BlogContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { BlogContext } from '../context/BlogContext';
 import Title from './Title';
 import BlogItem from './BlogItem';
 
 const FeaturedBlogs = () => {
-
     const { blogs } = useContext(BlogContext);
     const [featuredBlogs, setFeaturedBlogs] = useState([]);
 
     useEffect(() => {
-        // Filtering the blogs marked as featured
+        // Filtering featured blogs
         const featured = blogs.filter((item) => item.featured);
-        setFeaturedBlogs(featured.slice(0, 5)); // Limiting to 5 blogs
+        setFeaturedBlogs(featured.slice(0, 5)); // Limit to 5 featured blogs
     }, [blogs]);
 
     return (
-        <div className='my-10'>
-            <div className='text-center text-3xl py-8'>
-                <Title text1={'FEATURED'} text2={'BLOGS'} />
-                <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-                    Discover the best of anime with our featured blog posts, from in-depth reviews to the latest industry news!
+        <div className="my-14 px-6">
+            {/* Section Header */}
+            <div className="text-center py-8">
+                <Title text1="FEATURED" text2="BLOGS" />
+                <p className="w-full md:w-3/4 lg:w-2/3 mx-auto text-gray-400 text-sm sm:text-base">
+                    Discover the best of anime with our curated featured blogs! From in-depth reviews to the latest industry news, we've got you covered.
                 </p>
             </div>
 
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
-                {
+            {/* Blog Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {featuredBlogs.length > 0 ? (
                     featuredBlogs.map((item, index) => (
-                        <BlogItem key={index} id={item._id} title={item.title} image={item.coverImage} description={item.description} />
+                        <BlogItem 
+                            key={index} 
+                            id={item._id} 
+                            image={item.coverImage} 
+                            title={item.title} 
+                            description={item.description} 
+                        />
                     ))
-                }
+                ) : (
+                    <p className="text-gray-500 text-center col-span-full">No featured blogs available.</p>
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default FeaturedBlogs;

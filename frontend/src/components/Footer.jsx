@@ -1,50 +1,45 @@
-import React from 'react'
-import { assets } from '../assets/assets'
+import React from 'react';
+import { assets } from '../assets/assets';
 
 const Footer = () => {
   return (
-    <div>
-      <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
-
-        {/* Blog Description */}
+    <div className="bg-black text-gray-300 py-12 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm max-w-6xl mx-auto">
+        
         <div>
-            <img src={assets.logo} className='mb-5 w-32' alt="WeebTales Logo" />
-            <p className='w-full md:w-2/3 text-gray-600'>
-            Welcome to <b>WeebTales</b>! Your go-to anime blog for the latest reviews, recommendations, and industry news. Dive into the world of anime with insightful posts that cater to both casual fans and die-hard enthusiasts.
-            </p>
+          <img src={assets.logo} className="mb-5 w-36" alt="WeebTales Logo" />
+          <p className="text-gray-400">
+            Your go-to anime blog for the latest reviews, recommendations, and industry news.
+          </p>
         </div>
 
-        {/* Blog Links */}
         <div>
-            <p className='text-xl font-medium mb-5'>BLOG LINKS</p>
-            <ul className='flex flex-col gap-1 text-gray-600'>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Privacy Policy</li>
-                <li>Contact</li>
-            </ul>
+          <p className="text-lg font-semibold text-white mb-4">BLOG LINKS</p>
+          <ul className="flex flex-col gap-2">
+            <li className="hover:text-blue-400 transition cursor-pointer">🏠 Home</li>
+            <li className="hover:text-blue-400 transition cursor-pointer">📜 About Us</li>
+            <li className="hover:text-blue-400 transition cursor-pointer">🔒 Privacy Policy</li>
+            <li className="hover:text-blue-400 transition cursor-pointer">✉️ Contact</li>
+          </ul>
         </div>
 
-        {/* Get in Touch */}
         <div>
-            <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
-            <ul className='flex flex-col gap-1 text-gray-600'>
-                <li>+1-123-456-7890</li>
-                <li>contact@weebtales.com</li>
-                <li>Follow us: Twitter | Instagram</li>
-            </ul>
+          <p className="text-lg font-semibold text-white mb-4">GET IN TOUCH</p>
+          <ul className="flex flex-col gap-2">
+            <li>📞 +1-123-456-7890</li>
+            <li>📧 contact@weebtales.com</li>
+            <li className="hover:text-blue-400 transition cursor-pointer">🐦 Twitter</li>
+            <li className="hover:text-pink-500 transition cursor-pointer">📷 Instagram</li>
+          </ul>
         </div>
 
       </div>
 
-      {/* Copyright Information */}
-      <div>
-          <hr />
-          <p className='py-5 text-sm text-center'>Copyright 2025@ WeebTales.com - All Rights Reserved.</p>
+      <div className="mt-8 border-t border-gray-700 pt-5 text-center text-sm text-gray-400">
+        © 2025 WeebTales.com - All Rights Reserved.
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -1,51 +1,63 @@
-import React from 'react'
-import Title from '../components/Title'
-import { assets } from '../assets/assets'
-import NewsletterBox from '../components/NewsletterBox'
+import React from 'react';
+import Title from '../components/Title';
+import { assets } from '../assets/assets';
+import NewsletterBox from '../components/NewsletterBox';
 
 const About = () => {
   return (
-    <div>
-
+    <div className="text-white px-6 sm:px-16">
       {/* Section: About WeebTales */}
-      <div className='text-2xl text-center pt-8 border-t'>
-          <Title text1={'ABOUT'} text2={'WEEBTALES'} />
+      <div className="text-3xl text-center pt-16">
+        <Title text1="ABOUT" text2="WEEBTALES" />
       </div>
 
-      <div className='my-10 flex flex-col md:flex-row gap-16'>
-          <img className='w-full md:max-w-[450px]' src={assets.about_img} alt="Anime Blogging" />
-          <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
-              <p>Welcome to <b>WeebTales</b>, your go-to destination for anime blogs! We publish well-crafted articles covering anime reviews, industry news, character deep dives, and more.</p>
-              <p>Our goal is simple: to create a space where anime fans can enjoy insightful blogs without distractions. Whether you're looking for the latest seasonal anime recommendations or revisiting classics, we’ve got you covered.</p>
-              <b className='text-gray-800'>Our Mission</b>
-              <p>WeebTales exists to provide high-quality, engaging, and informative content for you to read and enjoy.</p>
-          </div>
+      <div className="mt-12 flex flex-col md:flex-row items-center gap-16">
+        {/* Left Side - Image */}
+        <div className="relative w-full md:max-w-[500px]">
+          <img className="rounded-lg shadow-lg" src={assets.about_img} alt="Anime Blogging" />
+          <div className="absolute inset-0 bg-black opacity-20 rounded-lg"></div>
+        </div>
+
+        {/* Right Side - Description */}
+        <div className="flex flex-col justify-center gap-6 md:w-2/4">
+          <p className="text-lg text-gray-300 leading-relaxed">
+            Welcome to <b className="text-white">WeebTales</b>, your go-to destination for anime blogs! We publish well-crafted articles covering anime reviews, industry news, character deep dives, and more.
+          </p>
+          <p className="text-lg text-gray-400 leading-relaxed">
+            Our goal is simple: to create a space where anime fans can enjoy insightful blogs without distractions. Whether you're looking for the latest seasonal anime recommendations or revisiting classics, we’ve got you covered.
+          </p>
+          <b className="text-gray-100 text-xl">Our Mission</b>
+          <p className="text-gray-400 text-lg">
+            WeebTales exists to provide high-quality, engaging, and informative content for you to read and enjoy.
+          </p>
+        </div>
       </div>
 
       {/* Section: What We Cover */}
-      <div className='text-xl py-4'>
-          <Title text1={'WHAT'} text2={'WE COVER'} />
+      <div className="text-3xl py-10 text-center">
+        <Title text1="WHAT" text2="WE COVER" />
       </div>
 
-      <div className='flex flex-col md:flex-row text-sm mb-20'>
-          <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-            <b>Anime Reviews:</b>
-            <p className='text-gray-600'>We provide in-depth reviews of seasonal and classic anime, analyzing story, animation, and character development.</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm mb-20">
+        {/* Glassmorphism Cards */}
+        {[
+          { title: "Anime Reviews", desc: "We provide in-depth reviews of seasonal and classic anime, analyzing story, animation, and character development." },
+          { title: "Anime News & Announcements", desc: "Stay updated with the latest anime industry news, upcoming releases, and event highlights." },
+          { title: "Anime Recommendations", desc: "Not sure what to watch next? We curate watchlists and genre-based suggestions to help you discover new favorites." }
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="bg-white/10 border border-gray-600 backdrop-blur-md px-8 py-10 flex flex-col gap-5 rounded-lg shadow-lg transition-all hover:scale-105"
+          >
+            <b className="text-lg text-white">{item.title}</b>
+            <p className="text-gray-300">{item.desc}</p>
           </div>
-          <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-            <b>Anime News & Announcements:</b>
-            <p className='text-gray-600'>Stay updated with the latest anime industry news, upcoming releases, and event highlights.</p>
-          </div>
-          <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-            <b>Anime Recommendations:</b>
-            <p className='text-gray-600'>Not sure what to watch next? We curate watchlists and genre-based suggestions to help you discover new favorites.</p>
-          </div>
+        ))}
       </div>
 
       <NewsletterBox />
-      
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

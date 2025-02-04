@@ -1,30 +1,20 @@
-import React from 'react'
-import { assets } from '../assets/assets'
+import React from 'react';
+import { assets } from '../assets/assets';
 
 const Hero = () => {
   return (
-    <div className='flex flex-col sm:flex-row border border-gray-400'>
-      {/* Hero Left Side */}
-      <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
-            <div className='text-[#414141]'>
-                <div className='flex items-center gap-2'>
-                    <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
-                    <p className='font-medium text-sm md:text-base'>LATEST BLOG POSTS</p>
-                </div>
-                <h1 className='prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed'>
-                  Dive Into the World of Anime
-                </h1>
-                <div className='flex items-center gap-2'>
-                    <p className='font-semibold text-sm md:text-base'>READ NOW</p>
-                    <p className='w-8 md:w-11 h-[1px] bg-[#414141]'></p>
-                </div>
-            </div>
+    <div className="relative w-full h-[80vh] bg-cover bg-center" style={{ backgroundImage: `url(${assets.hero_img})` }}>
+      <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center px-6">
+        <h1 className="text-4xl md:text-6xl font-bold">Dive Into the World of Anime</h1>
+        <p className="text-lg md:text-xl mt-4 max-w-2xl">
+          Explore the latest anime trends, reviews, and hidden gems from the anime universe.
+        </p>
+        <button className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-lg font-semibold">
+          Start Exploring
+        </button>
       </div>
-      
-      {/* Hero Right Side */}
-      <img className='w-full sm:w-1/2' src={assets.hero_img} alt="Anime Blog" />
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
