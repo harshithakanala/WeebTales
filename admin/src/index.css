@@ -39,3 +39,26 @@ button {
 button:hover {
     transform: scale(1.05);
 }
+
+@media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .blog-card {
+      width: 100%;
+    }
+  
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+  
