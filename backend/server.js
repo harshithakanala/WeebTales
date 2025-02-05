@@ -16,10 +16,7 @@ connectCloudinary()
 
 // middlewares
 app.use(express.json())
-app.use(cors({
-    origin: 'https://weebtales-frontend.vercel.app/', 
-    credentials: true,
-}));
+app.use(cors())
 
 // api endpoints
 app.use('/api/user',userRouter)
