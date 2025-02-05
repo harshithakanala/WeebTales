@@ -435,3 +435,45 @@ input, select {
     font-size: 20px; /* Resize social media icons */
   }
 }
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 🛠️ Sidebar should not overlap search bar */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* ✅ Ensure search & filter icons align */
+@media (max-width: 600px) {
+  .search-bar {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .search-bar input {
+    font-size: 14px;
+  }
+}
+
+/* ✅ Hide Sidebar on Mobile */
+@media (max-width: 768px) {
+  .topbar {
+    left: 0;
+  }
+}

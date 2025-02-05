@@ -1,18 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { BlogContext } from "../context/BlogContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { FaBars } from "react-icons/fa";
 
-const Topbar = () => {
-  const { search, setSearch, token } = useContext(BlogContext);
-  const navigate = useNavigate();
+const Topbar = ({ toggleSidebar }) => {
+  const { search, setSearch } = useContext(BlogContext);
   const location = useLocation();
 
   return (
-    <div className="fixed top-0 left-[250px] right-0 h-16 bg-gray-900 text-white flex items-center px-6 shadow-md z-40 border-b border-gray-700">
-      <div className="flex-1 flex justify-center">
+    <div className="fixed top-0 left-0 lg:left-[250px] right-0 h-16 bg-gray-900 text-white flex items-center px-6 shadow-md z-40 border-b border-gray-700">
+      {/* ☰ Menu Button */}
+      <button className="lg:hidden text-white mr-4" onClick={toggleSidebar}>
+        <FaBars size={22} />
+      </button>
+
+      <div className="flex-1 flex justify-center relative">
+        {/* Search Bar */}
         {location.pathname === "/collection" && (
-          <div className="relative flex items-center bg-gray-700 px-4 py-2 rounded-full w-full max-w-[400px]">
+          <div className="relative flex items-center bg-gray-700 px-4 py-2 rounded-full w-full max-w-[350px]">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
