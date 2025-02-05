@@ -9,28 +9,25 @@ const Collection = () => {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [genres, setGenres] = useState([]);
   const [sortType, setSortType] = useState("newest");
-  const [showFilters, setShowFilters] = useState(false); // Controls visibility of mobile filter dropdown
-  const filtersRef = useRef(null); // Ref to filter dropdown
-  const sortRef = useRef(null); // Ref to sort dropdown
+  const [showFilters, setShowFilters] = useState(false);
+  const filtersRef = useRef(null);
+  const sortRef = useRef(null);
 
   useEffect(() => {
     if (!blogs || blogs.length === 0) return;
 
     let filtered = [...blogs];
 
-    // Filter by search query
     if (search.trim() !== "") {
       filtered = filtered.filter((blog) =>
         blog.title.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    // Filter by genres
     if (genres.length > 0) {
       filtered = filtered.filter((blog) => genres.includes(blog.genre));
     }
 
-    // Sort blogs by date
     filtered.sort((a, b) =>
       sortType === "newest"
         ? new Date(b.date) - new Date(a.date)
@@ -40,7 +37,6 @@ const Collection = () => {
     setFilteredBlogs(filtered);
   }, [blogs, search, genres, sortType]);
 
-  // Close the filters dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -59,62 +55,70 @@ const Collection = () => {
     setGenres((prev) =>
       prev.includes(genre) ? prev.filter((g) => g !== genre) : [...prev, genre]
     );
-    setShowFilters(false); // Close the filters when a genre is selected
+    setShowFilters(false);
   };
 
   const toggleSort = (e) => {
     const selectedSortType = e.target.value;
     setSortType(selectedSortType);
-    setShowFilters(false); // Close filters when sort is selected
+    setShowFilters(false);
   };
 
   return (
     <div className="flex flex-col items-center bg-gray-50 text-gray-900 min-h-screen">
-      {/* Title and Mobile Filter Button */}
       <div className="w-full px-6 md:px-12 py-4 flex justify-between items-center">
         <Title text1="ALL" text2="BLOGS" />
-
-        {/* Filter Icon (Mobile Only) */}
         <button
-          className="p-2 bg-gray-700 text-white rounded-md md:hidden"
+          className="p-2 bg-gray-700 text-white rounded-md md:hidden transition-all transform hover:scale-105"
           onClick={() => setShowFilters(!showFilters)}
         >
           <FaFilter size={18} />
         </button>
       </div>
 
-      {/* Filters Dropdown (Visible on mobile when showFilters is true) */}
       {showFilters && (
         <div
-          ref={filtersRef} // Attach ref to the dropdown
-          className="absolute top-20 bg-gray-900 p-4 text-white rounded-md shadow-lg w-full md:hidden"
+          ref={filtersRef}
+          className="absolute top-20 bg-gray-900 p-6 text-white rounded-lg shadow-lg w-full md:hidden transition-all transform scale-105"
         >
-          <p className="font-semibold mb-2">Filters</p>
-          <div className="flex flex-col gap-2">
-            {["Action", "Adventure", "Fantasy", "Romance", "Sci-Fi", "Horror"].map((genre) => (
-              <label key={genre} className="flex items-center gap-2 cursor-pointer">
-                <input
-                  className="w-4 h-4 accent-blue-500"
-                  type="checkbox"
-                  value={genre}
-                  onChange={toggleGenre}
-                  checked={genres.includes(genre)}
-                />
-                <span className="text-white hover:text-gray-300 transition">{genre}</span> {/* White color on mobile */}
-              </label>
-            ))}
+          <div className="flex justify-between items-center">
+            <p className="font-semibold text-lg">Filters</p>
+            <button
+              className="text-gray-400 hover:text-white transition"
+              onClick={() => setShowFilters(false)}
+            >
+              Close
+            </button>
           </div>
 
-          {/* Sort By Dropdown (For mobile, displayed as checkboxes) */}
+          <div className="mt-4">
+            <p className="text-sm font-medium">Genres</p>
+            <div className="flex flex-col gap-2 mt-2">
+              {["Action", "Adventure", "Fantasy", "Romance", "Sci-Fi", "Horror"].map((genre) => (
+                <label key={genre} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    className="w-5 h-5 accent-blue-500"
+                    type="checkbox"
+                    value={genre}
+                    onChange={toggleGenre}
+                    checked={genres.includes(genre)}
+                  />
+                  <span className="text-white hover:text-gray-300 transition">{genre}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
           <div ref={sortRef} className="mt-6">
-            <p className="text-white text-sm font-medium">Sort By</p>
-            <div className="flex flex-row gap-4 mt-2">
+            <p className="text-sm font-medium">Sort By</p>
+            <div className="flex flex-col gap-2 mt-2">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
                   value="newest"
                   onChange={toggleSort}
                   checked={sortType === "newest"}
+                  className="w-5 h-5 accent-blue-500"
                 />
                 <span className="text-white hover:text-gray-300 transition">Newest</span>
               </label>
@@ -124,22 +128,22 @@ const Collection = () => {
                   value="oldest"
                   onChange={toggleSort}
                   checked={sortType === "oldest"}
+                  className="w-5 h-5 accent-blue-500"
                 />
                 <span className="text-white hover:text-gray-300 transition">Oldest</span>
               </label>
             </div>
           </div>
+
         </div>
       )}
 
-      {/* Blog Grid */}
       <div className="flex flex-col md:flex-row w-full">
-        {/* Filters for larger screens */}
         <div className="w-64 bg-white shadow-md border-r p-6 hidden md:block">
           <p className="text-lg font-semibold mb-4">Filters</p>
           <div>
             <p className="text-gray-700 text-sm font-medium">Genre</p>
-            <div className="flex flex-col gap-1 mt-2"> {/* Reduced gap between genres */}
+            <div className="flex flex-col gap-1 mt-2">
               {["Action", "Adventure", "Fantasy", "Romance", "Sci-Fi", "Horror"].map((genre) => (
                 <label key={genre} className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -149,13 +153,12 @@ const Collection = () => {
                     onChange={toggleGenre}
                     checked={genres.includes(genre)}
                   />
-                  <span className="text-black hover:text-gray-700 transition">{genre}</span> {/* Black color on desktop */}
+                  <span className="text-black hover:text-gray-700 transition">{genre}</span>
                 </label>
               ))}
             </div>
           </div>
 
-          {/* Sort By Dropdown (For desktop) */}
           <div ref={sortRef} className="mt-6">
             <p className="text-gray-700 text-sm font-medium">Sort By</p>
             <select
@@ -168,7 +171,6 @@ const Collection = () => {
           </div>
         </div>
 
-        {/* Display filtered blogs */}
         <div className="flex-1 p-10 ml-0 lg:ml-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredBlogs.length > 0 ? (

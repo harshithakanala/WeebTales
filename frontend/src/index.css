@@ -477,3 +477,11 @@ input, select {
     left: 0;
   }
 }
+
+@media (max-width: 768px) {
+  .sort-by-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
